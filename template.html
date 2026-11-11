@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jatam Food Distribution — Quality Food. Bigger Smiles. Every Day.</title>
+<meta name="description" content="Authentic African & Caribbean groceries delivered across the UK. Wholesale and retail.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Jatam Food Distribution — Quality Food. Bigger Smiles. Every Day.">
+<meta property="og:description" content="Authentic African & Caribbean groceries delivered across the UK.">
+<meta property="og:image" content="assets/img/landing/og-cover.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/landing/og-cover.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='28' r='14' fill='%23e53935'/%3E%3Cpath d='M24 14c0-4.5 3.2-7.6 8.4-8.6-.9 5.2-4 8.4-8.4 8.6Z' fill='%230da44a'/%3E%3C/svg%3E">
+<style>
+/* =========================================================================
+   Jatam storefront — single HTML shell, landing assets referenced from
+   assets/img/landing/. Product photos are embedded in the data.
+   ========================================================================= */
+:root{
+  --red:#e53935;--red-dark:#c62828;--red-soft:#fdeceb;
+  --green:#0da44a;--green-dark:#0a8a3e;--green-soft:#e8f7ee;
+  --deep:#064d2e;--deep-2:#04351f;--amber:#b86b00;--amber-soft:#fff3dc;
+  --ink:#12241b;--muted:#5b6b62;--line:#e2ece5;--surface:#fff;--soft:#f5faf7;--gray:#f5f5f5;
+  --r:8px;--r-lg:14px;
+  --shadow-sm:0 3px 12px rgba(6,77,46,.07);--shadow:0 18px 45px rgba(6,46,28,.12);--shadow-lg:0 22px 70px rgba(6,46,28,.18);
+  --page:min(1240px,calc(100% - 36px));--section:clamp(28px,3.4vw,60px);
+  --sans:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--surface);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;line-height:1.12}
+.page{width:var(--page);margin-inline:auto}
+.ribbon{background:var(--deep);color:#fff;text-align:center;font-size:.78rem;font-weight:600;padding:9px 14px}
+.ribbon strong{color:#bff5d2}
+.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.header-inner{display:grid;grid-template-columns:210px minmax(280px,1fr) auto;align-items:center;gap:20px;min-height:82px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:42px;height:42px;flex:none}
+.brand-text{display:grid;line-height:1}
+.brand-text b{font-style:italic;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:var(--red)}
+.brand-text span{font-size:.56rem;font-weight:800;letter-spacing:.33em;color:var(--green);margin-top:3px}
+.search{position:relative;min-width:0}
+.search label{display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;background:var(--soft);border:1px solid var(--line);border-radius:var(--r);color:var(--muted);transition:border-color .15s,box-shadow .15s,background .15s}
+.search:focus-within label{background:#fff;border-color:rgba(13,164,74,.5);box-shadow:0 0 0 3px rgba(13,164,74,.12)}
+.search input{border:0;outline:0;background:transparent;width:100%;color:var(--ink);font:inherit}
+.suggest{position:absolute;inset:calc(100% + 8px) 0 auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:8px;display:none;max-height:380px;overflow:auto;z-index:50}
+.suggest.open{display:block}
+.suggest a{display:grid;grid-template-columns:46px minmax(0,1fr) auto;align-items:center;gap:10px;padding:6px;border-radius:var(--r)}
+.suggest a:hover{background:var(--soft)}
+.suggest .thumb{width:46px;height:46px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:#fff}
+.suggest .thumb img{width:100%;height:100%;object-fit:contain}
+.suggest small{color:var(--muted)}
+.header-actions{display:flex;align-items:center;gap:6px}
+.act{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 12px;border:1px solid transparent;border-radius:var(--r);background:transparent;color:var(--ink);font-weight:600;font-size:.86rem}
+.act:hover{background:var(--soft);border-color:var(--line)}
+.basket-btn{background:var(--deep);color:#fff;border-color:var(--deep)}
+.basket-btn:hover{background:var(--deep-2);border-color:var(--deep-2)}
+.basket-count{min-width:20px;height:20px;padding:0 6px;display:inline-grid;place-items:center;background:var(--red);color:#fff;border-radius:999px;font-size:.7rem;font-weight:800}
+.mainnav{border-bottom:1px solid var(--line);background:#fff}
+.mainnav ul{display:flex;gap:2px;align-items:center;list-style:none;margin:0;padding:0;overflow-x:auto}
+.mainnav a{display:block;padding:12px 13px;font-weight:600;font-size:.88rem;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent}
+.mainnav a:hover,.mainnav a.active{color:var(--deep);border-bottom-color:var(--red)}
+.eyebrow{text-transform:uppercase;letter-spacing:.075em;font-size:.73rem;font-weight:800;color:var(--green-dark)}
+.section{padding-block:var(--section)}
+.section.tint{background:var(--soft)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
+.section-head h2{font-style:italic;font-weight:800;margin-top:4px;font-size:clamp(1.35rem,2.3vw,1.95rem)}
+.section-head p.sub{color:var(--muted);margin:6px 0 0}
+.link-more{color:var(--red);font-weight:700;font-size:.88rem;white-space:nowrap}
+.link-more:hover{text-decoration:underline}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:var(--r);border:1px solid transparent;font-weight:700;font-size:.9rem;transition:background .15s,border-color .15s,transform .12s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(229,57,53,.28)}
+.btn-primary:hover{background:var(--red-dark)}
+.btn-outline{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-outline:hover{border-color:var(--green);color:var(--deep)}
+.btn-sm{min-height:36px;padding:0 14px;font-size:.82rem}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.muted{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.72rem;font-weight:700;color:var(--muted);background:#fff}
+.chip.tag-hl{color:var(--green-dark);background:var(--green-soft);border-color:#bfe6cd}
+.hero{position:relative;min-height:clamp(380px,46vw,560px);display:flex;align-items:center;overflow:hidden;color:#fff;background:var(--deep)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center right}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,53,31,.92) 0%,rgba(4,53,31,.72) 38%,rgba(4,53,31,.18) 72%,rgba(4,53,31,.05) 100%)}
+.hero .page{position:relative;z-index:2}
+.hero-overlay{width:min(640px,92%);padding:clamp(24px,4vw,56px) 0}
+.hero-overlay .eyebrow{color:#7ff0a6}
+.hero-overlay h1{font-size:clamp(2rem,4.4vw,3.5rem);font-weight:800;line-height:1.03;margin:12px 0 14px}
+.hero-overlay p{color:#d3ecdd;font-size:clamp(1rem,1.5vw,1.1rem);max-width:580px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:28px}
+.hero-stats b{display:block;font-size:1.45rem;font-weight:800}
+.hero-stats span{color:#b9dcc7;font-size:.82rem}
+.hero .btn-outline{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.55);color:#fff}
+.page-hero{background:var(--deep);color:#fff;padding:clamp(30px,4.5vw,60px) 0}
+.page-hero h1{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-top:6px}
+.page-hero p{color:#b9dcc7;margin:8px 0 0;max-width:680px}
+.dept-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.dept-tile{position:relative;overflow:hidden;padding:0;min-height:150px;border:1px solid rgba(6,77,46,.1);border-radius:var(--r-lg);color:#fff;background:var(--deep);display:grid;text-align:left;box-shadow:0 12px 26px rgba(6,46,28,.12);transition:transform .18s,box-shadow .18s}
+.dept-tile:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(6,46,28,.24)}
+.dept-tile .art{position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;background:linear-gradient(145deg,#0a8a3e,#064d2e);overflow:hidden}
+.dept-tile .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .22s}
+.dept-tile:hover .art img{transform:scale(1.04)}
+.dept-tile .art::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(4,53,31,.05) 25%,rgba(4,53,31,.82) 100%)}
+.dept-tile .label{position:relative;z-index:2;align-self:end;padding:12px;display:grid;gap:2px}
+.dept-tile .label b{font-size:.9rem}
+.dept-tile .label span{font-size:.72rem;color:#bfe8cd}
+.country-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.country-tile{position:relative;overflow:hidden;border:0;border-radius:var(--r-lg);min-height:210px;color:#fff;background:var(--deep);text-align:left;padding:0}
+.country-tile .art{position:absolute;inset:0;display:grid;place-items:center;font-size:3.2rem;background:linear-gradient(145deg,#0a8a3e,#04351f);overflow:hidden}
+.country-tile .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .25s}
+.country-tile:hover .art img{transform:scale(1.05)}
+.country-tile .chipbox{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;background:rgba(4,53,31,.92);border-radius:var(--r);padding:10px 12px;display:flex;align-items:center;gap:10px;font-weight:700}
+.rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.product-card{position:relative;display:grid;grid-template-rows:196px 1fr;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0;transition:box-shadow .18s,transform .18s,border-color .18s}
+.product-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:#cfe6da}
+.product-image{position:relative;display:grid;place-items:center;background:#fff;padding:10px;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:contain}
+.badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:2}
+.tag{font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 8px;border-radius:999px}
+.tag.deal{background:var(--red);color:#fff}
+.tag.best{background:var(--deep);color:#fff}
+.product-body{display:flex;flex-direction:column;gap:8px;padding:12px}
+.product-body h3{font-size:.95rem;font-weight:700;line-height:1.28}
+.product-body h3 a:hover{color:var(--deep)}
+.product-meta{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:auto}
+.price{color:var(--red);font-weight:800;font-size:1.14rem}
+.price small{color:var(--muted);font-weight:600;font-size:.7rem}
+.price-was{color:var(--muted);text-decoration:line-through;font-size:.74rem}
+.stock-pill{display:inline-flex;width:max-content;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;font-size:.69rem;font-weight:700;color:var(--green-dark);background:var(--green-soft)}
+.stock-pill.low{color:var(--amber);background:var(--amber-soft)}
+.stock-pill.out{color:var(--muted);background:var(--gray)}
+.stock-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.catalogue{display:grid;grid-template-columns:236px minmax(0,1fr);gap:22px;align-items:start}
+.cat-panel{position:sticky;top:150px;align-self:start;display:grid;gap:18px}
+.cat-panel h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px}
+.cat-panel nav{display:grid;gap:4px}
+.cat-panel button{text-align:left;border:0;background:transparent;border-radius:var(--r);padding:8px 10px;color:var(--ink);font-weight:600;font-size:.86rem;display:flex;justify-content:space-between;gap:8px}
+.cat-panel button:hover{background:var(--soft)}
+.cat-panel button.active{background:var(--deep);color:#fff}
+.cat-panel button.active span{color:#b9dcc7}
+.cat-panel button span{color:var(--muted);font-weight:600;font-size:.78rem}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.toolbar .count{color:var(--muted);font-size:.86rem}
+.select{height:42px;border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:0 12px;font:inherit;color:var(--ink)}
+.load-more{display:grid;place-items:center;margin-top:24px}
+.empty-state{display:grid;place-items:center;gap:6px;text-align:center;min-height:180px;padding:24px;border:1px dashed var(--line);border-radius:var(--r);color:var(--muted)}
+.empty-state strong{color:var(--ink);font-size:1.05rem}
+.banners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.banner{position:relative;overflow:hidden;border-radius:var(--r-lg);min-height:230px;color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:end;border:1px solid rgba(4,53,31,.12);background:var(--deep)}
+.banner .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.banner::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,20,12,.05) 20%,rgba(4,20,12,.66) 100%)}
+.banner>*:not(.bg){position:relative;z-index:2}
+.banner h3{font-style:italic;font-weight:800;font-size:1.25rem}
+.banner .eyebrow{color:#bff5d2}
+.banner p{margin:4px 0 0;color:#dff3e6;font-size:.85rem}
+.pdp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:start}
+.gallery .main{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:22px;aspect-ratio:1/1;display:grid;place-items:center}
+.gallery .main img{max-width:94%;max-height:94%;object-fit:contain}
+.pdp-info h1{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800}
+.pdp-info .lede{color:var(--muted);margin:8px 0 0}
+.pdp-price{font-size:1.55rem;margin:14px 0 6px}
+.highlights{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.spec{border-top:1px solid var(--line);margin-top:20px;padding-top:16px;display:grid;gap:10px}
+.spec .row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;font-size:.9rem}
+.spec .row b{color:var(--muted);font-weight:600}
+.spec .row span{overflow-wrap:anywhere}
+.spec h4{margin-top:10px;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--green-dark)}
+.prose-block{margin-top:18px}
+.prose-block h3{font-style:italic;font-weight:800;font-size:1.05rem;margin-bottom:6px}
+.prose-block p{color:var(--muted);white-space:pre-line}
+.policy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.policy-card{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:22px;display:grid;gap:8px}
+.policy-card .ic{font-size:1.7rem}
+.policy-card h3{font-style:italic;font-weight:800;font-size:1.1rem}
+.policy-card p{color:var(--muted);font-size:.9rem;margin:0}
+.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.feature-card{display:grid;grid-template-columns:minmax(150px,.85fr) minmax(0,1.15fr);min-height:250px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.feature-card .media{position:relative;overflow:hidden;background:var(--soft);min-height:200px}
+.feature-card .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature-card .copy{padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.feature-card h3{font-style:italic;font-weight:800;font-size:1.2rem}
+.prose{max-width:820px;display:grid;gap:14px}
+.prose h2{font-style:italic;font-weight:800;font-size:1.35rem;margin-top:12px}
+.prose p,.prose li{color:var(--muted)}
+.prose ul{display:grid;gap:8px;padding-left:20px}
+.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.info-card{border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;background:#fff;display:grid;gap:8px}
+.info-card .ic{font-size:1.7rem}
+.reassurance{background:var(--deep);color:#fff}
+.reassurance .page{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.reassurance .cell{display:flex;align-items:center;gap:12px;padding:20px 24px;border-right:1px solid rgba(255,255,255,.14)}
+.reassurance .cell:last-child{border-right:0}
+.reassurance .cell:first-child{padding-left:0}
+.reassurance .ic{font-size:1.5rem}
+.reassurance b{display:block}
+.reassurance span{color:#b9dcc7;font-size:.82rem}
+.site-footer{background:var(--deep-2);color:#cfe6da;padding-top:44px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px;padding-bottom:30px}
+.site-footer h4{color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.88rem}
+.site-footer a:hover{color:#fff}
+.footer-brand .brand-text b{color:#fff}
+.footer-brand .brand-text span{color:#7ff0a6}
+.footer-brand p{font-size:.88rem;margin:14px 0 0;max-width:320px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:16px 0 28px;font-size:.8rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.socials{display:flex;gap:10px;margin-top:14px}
+.socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08)}
+.socials a:hover{background:var(--green)}
+.drawer{position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end;background:rgba(6,30,18,0);pointer-events:none;transition:background .16s}
+.drawer.open{background:rgba(6,30,18,.42);pointer-events:auto}
+.drawer-panel{width:min(440px,100%);height:100%;background:#fff;box-shadow:var(--shadow-lg);transform:translateX(100%);transition:transform .2s;display:flex;flex-direction:column}
+.drawer.open .drawer-panel{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer-body{flex:1;overflow:auto;padding:16px;display:grid;gap:12px;align-content:start}
+.drawer-foot{border-top:1px solid var(--line);padding:16px;display:grid;gap:12px}
+.line-item{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:var(--r);padding:10px}
+.line-item .thumb{width:60px;height:60px;border-radius:7px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.line-item .thumb img{width:100%;height:100%;object-fit:contain}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.qty button{width:28px;height:28px;border:0;background:#fff}
+.qty button:hover{background:var(--soft)}
+.qty span{min-width:30px;text-align:center;font-weight:700;font-size:.85rem}
+.totals{display:grid;gap:6px;font-size:.9rem}
+.totals .row{display:flex;justify-content:space-between}
+.totals .row.grand{font-size:1.1rem;font-weight:800;border-top:1px solid var(--line);padding-top:10px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--deep);color:#fff;padding:12px 18px;border-radius:var(--r);box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:80;font-size:.88rem;font-weight:600}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.notice{background:var(--green-soft);border:1px solid #bfe6cd;color:var(--deep);border-radius:var(--r);padding:12px 14px;font-size:.86rem}
+@media (max-width:1100px){.dept-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.grid,.rail{grid-template-columns:repeat(3,minmax(0,1fr))}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}.policy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){
+  .header-inner{grid-template-columns:46px minmax(0,1fr) auto;gap:10px;min-height:66px}
+  .brand-text{display:none}.act .label{display:none}
+  .catalogue{grid-template-columns:minmax(0,1fr)}
+  .cat-panel{position:static}
+  .cat-panel nav{display:flex;overflow-x:auto;gap:8px}
+  .cat-panel button{flex:none;white-space:nowrap}
+  .grid,.rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pdp{grid-template-columns:minmax(0,1fr)}
+  .policy-grid,.banners,.features{grid-template-columns:minmax(0,1fr)}
+  .country-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards-3{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:620px){
+  .dept-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .reassurance .page{grid-template-columns:1fr}
+  .reassurance .cell{border-right:0;border-bottom:1px solid rgba(255,255,255,.14);padding-left:0}
+  .section-head{flex-direction:column;align-items:start}
+  .spec .row{grid-template-columns:120px minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* Injected at build time. Product images are embedded; landing images are
+   referenced from assets/img/landing/. */
+window.__JATAM__ = __JATAM_DATA__;
+</script>
+<script>
+(function(){
+'use strict';
+const DATA = window.__JATAM__;
+const PRODUCTS = DATA.products;
+const CATS = [...new Set(PRODUCTS.map(p => p.category).filter(Boolean))];
+
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.prototype.slice.call((r||document).querySelectorAll(s));
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const money = n => (n==null||n===''||Number.isNaN(Number(n))) ? '—' : '£'+Number(n).toFixed(2);
+const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
+
+/* landing art (supplied in assets/img/) */
+const LANDING = {
+  heroDesktop: 'assets/img/landing/hero-desktop.jpg',
+  heroMobile: 'assets/img/landing/hero-mobile.jpg',
+  cat: {
+    'Beverages': 'assets/img/landing/cat-beverages.jpg',
+    'Pantry & Dry Goods': 'assets/img/landing/cat-pantry.jpg',
+    'Snacks': 'assets/img/landing/cat-snacks.jpg',
+    'Health & Beauty': 'assets/img/landing/cat-health-beauty.jpg',
+    'Home & Household': 'assets/img/landing/cat-home.jpg'
+  },
+  banner: {
+    snacks: 'assets/img/landing/banner-snacks.jpg',
+    drinks: 'assets/img/landing/banner-drinks.jpg',
+    home: 'assets/img/landing/banner-home.jpg'
+  },
+  country: {
+    'Nigeria': 'assets/img/landing/country-nigeria.jpg',
+    'Ghana': 'assets/img/landing/country-ghana.jpg',
+    'Jamaica': 'assets/img/landing/country-jamaica.jpg',
+    'South Africa': 'assets/img/landing/country-south-africa.jpg'
+  },
+  wholesale: 'assets/img/landing/wholesale.jpg',
+  delivery: 'assets/img/landing/delivery.jpg'
+};
+
+const STORE_INFO = {
+  delivery: 'UK-wide delivery in 1–4 working days. Free on orders over £50; otherwise calculated by weight at checkout.',
+  returns: 'Report damaged, missing or incorrect items within 14 days for a refund or store credit. Perishable items must be reported within 24–48 hours.',
+  contact: 'hello@jatamfood.co.uk',
+  phone: '+44 (0) 20 7946 0000',
+  address: 'Unit 12, Freshway Business Park, London, United Kingdom'
+};
+
+/* category art */
+const CAT_EMOJI = { 'Beverages':'🥤','Pantry & Dry Goods':'🥫','Snacks':'🍪','Health & Beauty':'🧴','Home & Household':'🧹' };
+const shade = (hex,amt)=>{const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;r=Math.max(0,Math.min(255,r+amt));g=Math.max(0,Math.min(255,g+amt));b=Math.max(0,Math.min(255,b+amt));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);};
+
+/* branded placeholder fallback for product photos */
+const artCache = {};
+function art(p){
+  if (artCache[p.slug]) return artCache[p.slug];
+  const emoji = CAT_EMOJI[p.category] || '🛒', c1 = '#0da44a', c2 = shade('#0da44a',-45);
+  const initials = String(p.name||'').split(/\s+/).slice(0,3).map(w=>w[0]).join('').toUpperCase();
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c1+'"/><stop offset="1" stop-color="'+c2+'"/></linearGradient></defs><rect width="400" height="400" fill="#f5faf7"/><circle cx="200" cy="168" r="126" fill="url(#g)" opacity="0.16"/><text x="200" y="212" font-size="146" text-anchor="middle" dominant-baseline="middle">'+emoji+'</text><text x="200" y="348" font-size="26" font-weight="700" text-anchor="middle" fill="'+c2+'" font-family="Montserrat,Arial,sans-serif" letter-spacing="4">'+initials+'</text></svg>';
+  return (artCache[p.slug] = 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg));
+}
+const img = p => '<img src="'+(p.image || art(p))+'" alt="'+esc(p.name)+'" loading="lazy">';
+
+/* price + availability */
+const currentPrice = p => p.sale_price != null ? p.sale_price : p.price;
+const wasPrice = p => p.sale_price != null ? p.price : (p.compare_at_price && p.compare_at_price > p.price ? p.compare_at_price : null);
+const availability = p => p.status === 'active' ? { label:'In stock', cls:'' } : p.status === 'draft' ? { label:'Available to order', cls:'low' } : { label:'Unavailable', cls:'out' };
+
+/* brand: the build already removes reference-store names from vendor */
+function realBrand(p){
+  return String(p.vendor||'').split(',').map(s=>s.trim()).filter(s=>s && !/^no brand$/i.test(s)).join(', ');
+}
+/* customer-friendly highlights from tags */
+const HIGHLIGHT_TAGS = ['gluten-free','vegan','vegetarian','halal','high-protein','organic','sugar-free','low-fat'];
+function highlights(p){
+  return String(p.tags||'').split(',').map(t=>t.trim()).filter(t=>HIGHLIGHT_TAGS.includes(t.toLowerCase()));
+}
+function storageFor(p){
+  const hay = (p.name+' '+(p.tags||'')+' '+(p.description||'')).toLowerCase();
+  if (/frozen/.test(hay)) return 'Keep frozen at -18°C. Do not refreeze after thawing.';
+  if (/chilled|refrigerat/.test(hay)) return 'Keep refrigerated. Follow the pack for use-by guidance.';
+  return 'Store in a cool, dry place away from direct sunlight.';
+}
+
+/* basket */
+const cart = {
+  key:'jatam_preview_cart',
+  items: store.get('jatam_preview_cart', []),
+  save(){ store.set(this.key,this.items); this.render(); },
+  add(slug,qty){ const p = PRODUCTS.find(x=>x.slug===slug); if(!p) return; const l=this.items.find(i=>i.slug===slug); qty=qty||1; if(l) l.qty+=qty; else this.items.push({slug,qty}); this.save(); },
+  setQty(slug,qty){ const l=this.items.find(i=>i.slug===slug); if(!l) return; l.qty=qty; if(l.qty<=0) this.items=this.items.filter(i=>i.slug!==slug); this.save(); },
+  count(){ return this.items.reduce((n,i)=>n+i.qty,0); },
+  lines(){ return this.items.map(i=>({p:PRODUCTS.find(x=>x.slug===i.slug),qty:i.qty})).filter(l=>l.p).map(l=>({...l,line:currentPrice(l.p)*l.qty})); },
+  subtotal(){ return this.lines().reduce((n,l)=>n+l.line,0); },
+  render(){
+    const n=this.count();
+    $$('[data-count]').forEach(el=>{ el.textContent=n; el.style.display=n?'':'none'; });
+    const body=$('#drawer-body'); if(!body) return;
+    const lines=this.lines();
+    body.innerHTML = lines.length ? lines.map(l =>
+      '<div class="line-item"><div class="thumb">'+img(l.p)+'</div>'+
+      '<div><strong style="font-size:.88rem">'+esc(l.p.name)+'</strong>'+
+      '<div class="muted" style="font-size:.76rem">'+esc(l.p.unit||'')+'</div>'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-top:6px">'+
+      '<span class="qty" data-qty="'+l.p.slug+'"><button data-dec aria-label="Decrease">−</button><span>'+l.qty+'</span><button data-inc aria-label="Increase">+</button></span>'+
+      '<span class="price" style="font-size:.92rem">'+money(l.line)+'</span></div></div>'+
+      '<button class="act" data-remove="'+l.p.slug+'" aria-label="Remove" style="height:auto;padding:4px">✕</button></div>').join('')
+      : '<div class="empty-state"><strong>Your basket is empty</strong><span>Add products from the catalogue to begin checkout.</span><a class="btn btn-primary btn-sm" href="#/shop" style="margin-top:8px">Browse products</a></div>';
+    const sub=this.subtotal(); const ship = sub>=50||sub===0?0:4.99;
+    $('#drawer-foot').innerHTML =
+      '<div class="totals"><div class="row"><span>Subtotal</span><span>'+money(sub)+'</span></div>'+
+      '<div class="row"><span>Delivery</span><span>'+(sub===0?'—':ship===0?'Free':money(ship))+'</span></div>'+
+      '<div class="row grand"><span>Total</span><span>'+money(sub+ship)+'</span></div></div>'+
+      '<a class="btn btn-primary" href="#/checkout" style="width:100%">Checkout</a>'+
+      '<button class="act" data-close-cart style="justify-content:center">Continue shopping</button>';
+  }
+};
+
+let toastEl,timer;
+function toast(msg){ if(!toastEl){ toastEl=document.createElement('div'); toastEl.className='toast'; document.body.appendChild(toastEl); } toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(timer); timer=setTimeout(()=>toastEl.classList.remove('show'),1900); }
+
+const state = { cat:'all', q:'', sort:'featured', shown:12 };
+
+/* chrome */
+function logo(){ return '<a class="brand" href="#/" aria-label="Jatam Food Distribution home">'+
+  '<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="28" r="14" fill="#e53935"/><path d="M24 14c0-4.5 3.2-7.6 8.4-8.6-.9 5.2-4 8.4-8.4 8.6Z" fill="#0da44a"/><path d="M11 31c8.6 6 17.4 6 26 0" stroke="#0da44a" stroke-width="3" fill="none" stroke-linecap="round"/></svg>'+
+  '<span class="brand-text"><b>JATAM</b><span>FOOD DISTRIBUTION</span></span></a>'; }
+const NAV=[['#/','Home'],['#/shop','Shop'],['#/shop?deals=1','Deals'],['#/delivery','Delivery &amp; returns'],['#/about','About']];
+function header(active){ return ''+
+  '<div class="ribbon">🚚 Free UK delivery over £50 · <strong>Quality Food. Bigger Smiles. Every Day.</strong></div>'+
+  '<div class="site-header"><div class="page header-inner">'+logo()+
+  '<div class="search"><label for="q"><span aria-hidden="true">🔎</span><input id="q" type="search" placeholder="Search '+PRODUCTS.length+' products…" autocomplete="off" aria-label="Search products"></label><div class="suggest" id="suggest"></div></div>'+
+  '<div class="header-actions">'+
+  '<button class="act basket-btn" data-open-cart aria-label="Open basket"><span aria-hidden="true">🛒</span><span class="label">Basket</span><span class="basket-count" data-count style="display:none">0</span></button>'+
+  '<a class="act" href="#/checkout"><span aria-hidden="true">👤</span><span class="label">Checkout</span></a>'+
+  '</div></div></div>'+
+  '<nav class="mainnav"><div class="page"><ul>'+NAV.map(n=>'<li><a href="'+n[0]+'"'+(n[1]===active?' class="active"':'')+'>'+n[1]+'</a></li>').join('')+'</ul></div></nav>'; }
+function footer(){ const B=STORE_INFO;
+  return '<div class="reassurance"><div class="page">'+
+  '<div class="cell"><span class="ic">🔒</span><div><b>Secure checkout</b><span>Protected payment processing</span></div></div>'+
+  '<div class="cell"><span class="ic">✅</span><div><b>Carefully prepared</b><span>Quality checked by the Jatam team</span></div></div>'+
+  '<div class="cell"><span class="ic">🚚</span><div><b>Clear UK delivery</b><span>Delivery cost confirmed at checkout</span></div></div>'+
+  '</div></div>'+
+  '<footer class="site-footer"><div class="page"><div class="footer-grid">'+
+  '<div class="footer-brand">'+logo()+'<p>Quality Food. Bigger Smiles. Every Day. Real African and Caribbean flavours, delivered across the UK.</p><p style="color:#9dc4ac">'+B.address+'</p><div class="socials"><a href="#" aria-label="Instagram">📷</a><a href="#" aria-label="Facebook">👍</a><a href="#" aria-label="TikTok">🎵</a></div></div>'+
+  '<div><h4>Shop</h4><ul><li><a href="#/shop">All products</a></li><li><a href="#/shop?deals=1">Deals</a></li><li><a href="#/shop?cat=Beverages">Drinks</a></li><li><a href="#/shop?cat=Snacks">Snacks</a></li></ul></div>'+
+  '<div><h4>Help</h4><ul><li><a href="#/delivery">Delivery &amp; returns</a></li><li><a href="#/about">About us</a></li><li><a href="#/checkout">Checkout</a></li></ul></div>'+
+  '<div><h4>Contact</h4><ul><li><a href="tel:'+B.phone.replace(/\s/g,'')+'">'+B.phone+'</a></li><li><a href="mailto:'+B.contact+'">'+B.contact+'</a></li></ul><p style="color:#9dc4ac;font-size:.8rem">UK delivery with clear weight-based pricing at checkout.</p></div>'+
+  '</div><div class="footer-bottom"><span>© '+new Date().getFullYear()+' Jatam Food Distribution. All rights reserved.</span><span>Quality Food. Bigger Smiles. Every Day.</span></div></div></footer>'; }
+function drawer(){ return '<div class="drawer" id="drawer" aria-hidden="true"><div class="drawer-panel" role="dialog" aria-label="Your basket"><div class="drawer-head"><h3 style="font-size:1.05rem">Your basket</h3><button class="act" data-close-cart aria-label="Close basket">✕</button></div><div class="drawer-body" id="drawer-body"></div><div class="drawer-foot" id="drawer-foot"></div></div></div>'; }
+
+/* product card (no source / vendor / category labels) */
+function card(p){
+  const now = currentPrice(p), was = wasPrice(p), av = availability(p);
+  const deal = p.sale_price != null;
+  return '<article class="product-card" data-product="'+esc(p.slug)+'">'+
+    '<div class="product-image"><div class="badges">'+(deal?'<span class="tag deal">Deal</span>':'')+(p.featured?'<span class="tag best">Featured</span>':'')+'</div>'+
+    '<a href="#/product/'+encodeURIComponent(p.slug)+'">'+img(p)+'</a></div>'+
+    '<div class="product-body">'+
+    '<h3><a href="#/product/'+encodeURIComponent(p.slug)+'">'+esc(p.name)+'</a></h3>'+
+    '<span class="stock-pill '+av.cls+'">'+av.label+'</span>'+
+    '<div class="product-meta"><span><span class="price">'+money(now)+'</span>'+(was?' <span class="price-was">'+money(was)+'</span>':'')+' <small>per '+esc(p.unit||'item')+'</small></span></div>'+
+    '<button class="btn btn-primary btn-sm add-btn" data-add="'+esc(p.slug)+'">Add to basket</button>'+
+    '</div></article>';
+}
+
+function filtered(){
+  let list = PRODUCTS.slice();
+  if (state.cat!=='all') list=list.filter(p=>p.category===state.cat);
+  const q=state.q.trim().toLowerCase();
+  if(q) list=list.filter(p=>((p.name||'')+' '+(p.tags||'')+' '+(p.short_description||'')).toLowerCase().includes(q));
+  if(state.sort==='price-asc') list.sort((a,b)=>currentPrice(a)-currentPrice(b));
+  else if(state.sort==='price-desc') list.sort((a,b)=>currentPrice(b)-currentPrice(a));
+  else if(state.sort==='name') list.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+  else list.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||(b.sale_price!=null?1:0)-(a.sale_price!=null?1:0));
+  return list;
+}
+function catButtons(active){ return '<button data-cat="all"'+(active==='all'?' class="active"':'')+'>All products <span>'+PRODUCTS.length+'</span></button>'+
+  CATS.map(c=>'<button data-cat="'+esc(c)+'"'+(active===c?' class="active"':'')+'>'+esc(c)+' <span>'+PRODUCTS.filter(p=>p.category===c).length+'</span></button>').join(''); }
+
+/* views */
+function viewHome(){
+  const deals = PRODUCTS.filter(p=>p.sale_price!=null).slice(0,8);
+  const best = PRODUCTS.slice(0,8);
+  return '<section class="hero">'+
+  '<picture class="hero-bg"><source media="(max-width:700px)" srcset="'+LANDING.heroMobile+'"><img src="'+LANDING.heroDesktop+'" alt="" fetchpriority="high"></picture>'+
+  '<div class="page hero-overlay"><span class="eyebrow">Fresh · Reliable · Nationwide</span><h1>Quality Food.<br>Bigger Smiles. Every Day.</h1>'+
+  '<p>Authentic African &amp; Caribbean groceries — from garri, palm oil and swallow flours to malt drinks, seasonings and household essentials. Delivered to homes and businesses across the UK.</p>'+
+  '<div class="hero-cta"><a class="btn btn-primary" href="#/shop">Shop the range</a><a class="btn btn-outline" href="#/delivery">Delivery &amp; returns</a></div>'+
+  '<div class="hero-stats"><div><b>'+PRODUCTS.length+'</b><span>Products in store</span></div><div><b>UK-wide</b><span>Delivery</span></div><div><b>Free</b><span>Delivery over £50</span></div></div></div></section>'+
+
+  '<section class="section"><div class="page"><div class="section-head"><div><span class="eyebrow">Shop your way</span><h2>Shop by category</h2></div><a class="link-more" href="#/shop">View all departments →</a></div>'+
+  '<div class="dept-grid">'+CATS.map(c=>{const n=PRODUCTS.filter(p=>p.category===c).length;const src=LANDING.cat[c];return '<a class="dept-tile" href="#/shop?cat='+encodeURIComponent(c)+'"><span class="art">'+(src?'<img src="'+src+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':(CAT_EMOJI[c]||'🛒'))+'</span><span class="label"><b>'+esc(c)+'</b><span>'+n+' products</span></span></a>';}).join('')+'</div></div></section>'+
+
+  (deals.length?'<section class="section tint"><div class="page"><div class="section-head"><div><span class="eyebrow">Save more</span><h2>Hottest deals</h2></div><a class="link-more" href="#/shop?deals=1">View all →</a></div><div class="rail">'+deals.map(card).join('')+'</div></div></section>':'')+
+
+  '<section class="section"><div class="page"><div class="section-head"><div><span class="eyebrow">Live product catalogue</span><h2>All products</h2><p class="sub">Browse the full range by department.</p></div><a class="link-more" href="#/shop">Shop all products →</a></div>'+
+  '<div class="catalogue"><aside class="cat-panel"><div><h4>Categories</h4><nav data-catlist>'+catButtons(state.cat)+'</nav></div></aside>'+
+  '<div><div class="grid" data-grid>'+filtered().slice(0,12).map(card).join('')+'</div>'+
+  '<div class="load-more"><a class="btn btn-outline" href="#/shop">See all '+PRODUCTS.length+' products</a></div></div></div></div></section>'+
+
+  '<section class="section tint"><div class="page"><div class="section-head"><div><span class="eyebrow">Value options</span><h2>Browse by department</h2></div></div><div class="banners">'+
+  '<a class="banner" href="#/shop?cat=Snacks"><img class="bg" src="'+LANDING.banner.snacks+'" alt="" loading="lazy" onerror="this.style.display=\'none\'"><span class="eyebrow">Snacks</span><h3>Crackers, chips<br>&amp; sweets.</h3><p>Snacks &amp; confectionery</p></a>'+
+  '<a class="banner" href="#/shop?cat=Beverages"><img class="bg" src="'+LANDING.banner.drinks+'" alt="" loading="lazy" onerror="this.style.display=\'none\'"><span class="eyebrow">Refresh</span><h3>Malt, fizz &amp;<br>fruit drinks.</h3><p>Drinks &amp; beverages</p></a>'+
+  '<a class="banner" href="#/shop?cat=Home%20%26%20Household"><img class="bg" src="'+LANDING.banner.home+'" alt="" loading="lazy" onerror="this.style.display=\'none\'"><span class="eyebrow">Home</span><h3>Everyday<br>household staples.</h3><p>Home &amp; household</p></a>'+
+  '</div></div></section>'+
+
+  '<section class="section"><div class="page"><div class="section-head"><div><span class="eyebrow">Popular</span><h2>Best sellers</h2></div><a class="link-more" href="#/shop">View all products →</a></div><div class="rail">'+best.map(card).join('')+'</div></div></section>'+
+
+  '<section class="section tint"><div class="page"><div class="section-head"><div><span class="eyebrow">Why Jatam</span><h2>Fresh, reliable, professional</h2></div></div><div class="features">'+
+  '<article class="feature-card"><div class="media"><img src="'+LANDING.wholesale+'" alt="" loading="lazy" onerror="this.parentElement.style.background=\'linear-gradient(145deg,#0da44a,#064d2e)\'"></div><div class="copy"><span class="eyebrow">Wholesale &amp; retail</span><h3>One basket. Everybody fed.</h3><p class="muted">Bulk catering quantities, consistent pack sizes and next-day UK delivery for homes, shops and kitchens.</p><a class="link-more" href="#/shop">Build your order →</a></div></article>'+
+  '<article class="feature-card"><div class="media"><img src="'+LANDING.delivery+'" alt="" loading="lazy" onerror="this.parentElement.style.background=\'linear-gradient(145deg,#e53935,#8e1f1c)\'"></div><div class="copy"><span class="eyebrow">Delivery</span><h3>From our aisle to your door.</h3><p class="muted">Carefully packed and delivered across the UK. Free delivery on orders over £50, with clear weight-based pricing.</p><a class="link-more" href="#/delivery">Delivery &amp; returns →</a></div></article>'+
+  '</div></div></section>'+
+
+  '<section class="section"><div class="page"><div class="section-head"><div><span class="eyebrow">Browse the range</span><h2>Shop by country and region</h2></div></div><div class="country-grid">'+
+  ['Nigeria','Ghana','Jamaica','South Africa'].map(c=>{const flag={'Nigeria':'🇳🇬','Ghana':'🇬🇭','Jamaica':'🇯🇲','South Africa':'🇿🇦'}[c];const src=LANDING.country[c];return '<a class="country-tile" href="#/shop"><span class="art">'+(src?'<img src="'+src+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':flag)+'</span><span class="chipbox"><span style="font-size:1.25rem">'+flag+'</span>'+c+'</span></a>';}).join('')+
+  '</div></div></section>'+
+
+  '<section class="section tint"><div class="page"><div class="section-head"><div><span class="eyebrow">Need a hand?</span><h2>Delivery &amp; returns</h2></div><a class="link-more" href="#/delivery">Read more →</a></div><div class="policy-grid">'+
+  '<div class="policy-card"><span class="ic">🚚</span><h3>Delivery</h3><p>'+esc(STORE_INFO.delivery)+'</p></div>'+
+  '<div class="policy-card"><span class="ic">↩️</span><h3>Returns</h3><p>'+esc(STORE_INFO.returns)+'</p></div>'+
+  '<div class="policy-card"><span class="ic">💬</span><h3>Contact</h3><p>Email '+esc(STORE_INFO.contact)+' or call '+esc(STORE_INFO.phone)+'.</p></div>'+
+  '</div></div></section>';
+}
+
+function viewShop(){
+  const dealsQ = /deals=1/.test(location.hash);
+  const list = dealsQ ? PRODUCTS.filter(p=>p.sale_price!=null) : filtered();
+  const slice = list.slice(0,state.shown);
+  return '<section class="page-hero"><div class="page"><span class="eyebrow">Product catalogue</span><h1>'+(dealsQ?'Deals':'Shop all products')+'</h1><p id="shop-count">'+list.length+' products available</p></div></section>'+
+  '<section class="section"><div class="page catalogue"><aside class="cat-panel"><div><h4>Categories</h4><nav data-catlist>'+catButtons(state.cat)+'</nav></div></aside><div>'+
+  '<div class="toolbar"><span class="count" data-countlabel>'+list.length+' products</span><div style="display:flex;gap:8px">'+
+  '<input class="select" type="search" placeholder="Filter products…" value="'+esc(state.q)+'" data-filterq style="min-width:170px">'+
+  '<select class="select" data-sort>'+[['featured','Sort: Featured'],['price-asc','Price: low to high'],['price-desc','Price: high to low'],['name','Name A–Z']].map(o=>'<option value="'+o[0]+'"'+(state.sort===o[0]?' selected':'')+'>'+o[1]+'</option>').join('')+'</select></div></div>'+
+  '<div class="grid" data-grid>'+(slice.length?slice.map(card).join(''):'<div class="empty-state" style="grid-column:1/-1"><strong>No products found</strong><span>Try a different filter.</span></div>')+'</div>'+
+  '<div class="load-more"'+(list.length<=state.shown?' style="display:none"':'')+'><button class="btn btn-outline" data-loadmore>Load more</button></div>'+
+  '</div></div></section>';
+}
+
+function viewDelivery(){
+  return '<section class="page-hero"><div class="page"><span class="eyebrow">Customer care</span><h1>Delivery &amp; returns</h1><p>Everything you need to know about getting your order and returning an item.</p></div></section>'+
+  '<section class="section"><div class="page"><div class="policy-grid">'+
+  '<div class="policy-card"><span class="ic">🚚</span><h3>Delivery</h3><p>'+esc(STORE_INFO.delivery)+'</p></div>'+
+  '<div class="policy-card"><span class="ic">↩️</span><h3>Returns &amp; refunds</h3><p>'+esc(STORE_INFO.returns)+'</p></div>'+
+  '<div class="policy-card"><span class="ic">💬</span><h3>We’re here to help</h3><p>Email '+esc(STORE_INFO.contact)+' or call '+esc(STORE_INFO.phone)+' (Mon–Fri, 9am–5pm).</p></div>'+
+  '</div></div></section>'+
+  '<section class="section tint"><div class="page prose"><h2>How delivery works</h2><ul>'+
+  '<li>Orders are picked and packed by the Jatam team, with chilled and frozen items handled carefully.</li>'+
+  '<li>Delivery cost is calculated at checkout from the total weight of your basket.</li>'+
+  '<li>Free UK delivery on orders over £50.</li>'+
+  '<li>Most orders arrive within 1–4 working days.</li></ul>'+
+  '<h2>Returns</h2><p>If something arrives damaged, missing or incorrect, contact us within 14 days and we’ll make it right. Perishable and frozen items should be reported within 24–48 hours with a photo where possible.</p>'+
+  '<h2>Contact</h2><p>Email '+esc(STORE_INFO.contact)+' · '+esc(STORE_INFO.phone)+'<br>'+esc(STORE_INFO.address)+'</p></div></section>';
+}
+
+function row(label,val){ return '<div class="row"><b>'+esc(label)+'</b><span>'+(val==null||val===''?'<em class="muted">—</em>':val)+'</span></div>'; }
+function viewProduct(slug){
+  const p = PRODUCTS.find(x=>x.slug===slug);
+  if(!p) return '<section class="section"><div class="page empty-state"><strong>Product not found</strong><a class="link-more" href="#/shop">Back to shop →</a></div></section>';
+  const now=currentPrice(p), was=wasPrice(p), av=availability(p), brand=realBrand(p), hl=highlights(p);
+  const related=PRODUCTS.filter(x=>x.category===p.category&&x.slug!==p.slug).slice(0,4);
+  return '<section class="section"><div class="page">'+
+  '<div class="muted" style="margin-bottom:14px"><a href="#/">Home</a> / <a href="#/shop">Shop</a> / <a href="#/shop?cat='+encodeURIComponent(p.category)+'">'+esc(p.category)+'</a></div>'+
+  '<div class="pdp"><div class="gallery"><div class="main">'+img(p)+'</div></div>'+
+  '<div class="pdp-info">'+
+  (brand?'<span class="eyebrow">'+esc(brand)+'</span>':'')+
+  '<h1>'+esc(p.name)+'</h1>'+
+  '<p class="lede">'+esc(p.short_description||'')+'</p>'+
+  (hl.length?'<div class="highlights">'+hl.map(t=>'<span class="chip tag-hl">'+esc(t)+'</span>').join('')+'</div>':'')+
+  '<div class="price pdp-price">'+money(now)+(was?' <span class="price-was">'+money(was)+'</span>':'')+' <small>per '+esc(p.unit||'item')+'</small></div>'+
+  '<span class="stock-pill '+av.cls+'">'+av.label+'</span>'+
+  '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px">'+
+  '<span class="qty" id="pdp-qty"><button data-dec aria-label="Decrease">−</button><span id="pdp-qty-val">1</span><button data-inc aria-label="Increase">+</button></span>'+
+  '<button class="btn btn-primary" data-add="'+esc(p.slug)+'">Add to basket</button>'+
+  '<a class="btn btn-outline" href="#/checkout">Go to checkout</a></div>'+
+  '<div class="spec">'+
+  '<h4>Product details</h4>'+
+  (brand?row('Brand', esc(brand)):'')+
+  row('Pack size', esc(p.unit||'—'))+
+  row('Category', esc(p.category))+
+  row('SKU', esc(p.sku))+
+  row('Allergens', esc(p.allergens||'Check the product label.'))+
+  row('Storage', esc(storageFor(p)))+
+  '</div>'+
+  '<div class="prose-block"><h3>About this product</h3><p>'+esc(p.description||p.short_description||'')+'</p></div>'+
+  '<div class="prose-block"><h3>Delivery &amp; returns</h3><p>'+esc(STORE_INFO.delivery)+' '+esc(STORE_INFO.returns)+'</p></div>'+
+  '</div></div>'+
+  (related.length?'<div style="margin-top:44px"><div class="section-head"><div><span class="eyebrow">More in '+esc(p.category)+'</span><h2>Related products</h2></div></div><div class="rail">'+related.map(card).join('')+'</div></div>':'')+
+  '</div></section>';
+}
+
+function viewAbout(){
+  return '<section class="page-hero"><div class="page"><span class="eyebrow">About us</span><h1>Fresh food, reliably delivered.</h1><p>Jatam Food Distribution supplies African &amp; Caribbean groceries to homes, shops and kitchens across the UK.</p></div></section>'+
+  '<section class="section"><div class="page prose">'+
+  '<h2>Our story</h2><p>Jatam began with a simple idea: make the tastes of home easy to get, wherever you are in the UK. What started as a small grocery service has grown into a full catalogue of grains, swallow flours, oils, seasonings, drinks, snacks and household essentials.</p>'+
+  '<p>We deal in the everyday staples that make a kitchen feel like home — from garri, semovita and honey beans to palm oil, jollof seasoning and malt drinks. Every order is checked and packed by our team before it leaves us.</p>'+
+  '<h2>What we stand for</h2><ul><li><strong>Quality food</strong> — trusted brands and carefully selected produce.</li><li><strong>Reliability</strong> — careful packing and clear UK delivery.</li><li><strong>Community</strong> — supporting homes, shops and kitchens with the flavours they love.</li></ul>'+
+  '<h2>Delivery &amp; returns</h2><p>'+esc(STORE_INFO.delivery)+'</p><p>'+esc(STORE_INFO.returns)+'</p>'+
+  '<p class="muted" style="font-size:.85rem">This is a design preview; checkout and forms are demonstrative.</p>'+
+  '</div></section>';
+}
+
+function viewCheckout(){
+  const lines=cart.lines(), sub=cart.subtotal(), ship=sub>=50||sub===0?0:4.99;
+  return '<section class="page-hero"><div class="page"><span class="eyebrow">Secure checkout</span><h1>Checkout</h1><p>Demo checkout — no payment is processed.</p></div></section>'+
+  '<section class="section"><div class="page" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:28px;align-items:start">'+
+  '<div><div class="notice" style="margin-bottom:16px">🧪 This is a preview. Placing an order only shows a confirmation screen.</div>'+
+  '<form id="co-form" style="display:grid;gap:14px" onsubmit="return false">'+
+  '<input class="select" type="email" placeholder="Email address" required>'+
+  '<input class="select" placeholder="Full name" required>'+
+  '<input class="select" placeholder="Address" required>'+
+  '<div style="display:flex;gap:12px"><input class="select" style="flex:1" placeholder="Town / city" required><input class="select" style="flex:1" placeholder="Postcode" required></div>'+
+  '<button class="btn btn-primary" type="submit" style="justify-self:start">Place order · '+money(sub+ship)+'</button></form></div>'+
+  '<aside class="info-card" style="position:sticky;top:150px"><h3 style="font-style:italic;font-weight:800">Order summary</h3>'+
+  (lines.length?lines.map(l=>'<div style="display:flex;justify-content:space-between;gap:10px;font-size:.88rem"><span>'+esc(l.p.name)+' <span class="muted">×'+l.qty+'</span></span><span>'+money(l.line)+'</span></div>').join(''):'<p class="muted">Your basket is empty. <a class="link-more" href="#/shop">Browse products →</a></p>')+
+  '<div class="totals" style="margin-top:12px"><div class="row"><span>Subtotal</span><span>'+money(sub)+'</span></div><div class="row"><span>Delivery</span><span>'+(sub===0?'—':ship===0?'Free':money(ship))+'</span></div><div class="row grand"><span>Total</span><span>'+money(sub+ship)+'</span></div></div></aside>'+
+  '</div></section>';
+}
+
+/* router */
+function route(){
+  const hash=location.hash||'#/'; const [path,query]=hash.replace(/^#/,'').split('?');
+  const params=new URLSearchParams(query||'');
+  if(params.get('cat')) state.cat=params.get('cat');
+  if(params.get('q')) state.q=params.get('q');
+  let view,active='Home';
+  if(path.indexOf('/product/')===0){ view=viewProduct(decodeURIComponent(path.slice('/product/'.length))); active='Shop'; }
+  else if(path==='/shop'){ view=viewShop(); active='Shop'; }
+  else if(path==='/delivery'){ view=viewDelivery(); active='Delivery &amp; returns'; }
+  else if(path==='/about'){ view=viewAbout(); active='About'; }
+  else if(path==='/checkout'){ view=viewCheckout(); active=''; }
+  else { view=viewHome(); active='Home'; }
+  $('#app').innerHTML=header(active)+'<main>'+view+'</main>'+footer()+drawer();
+  cart.render(); wireSearch();
+  if(path!=='/'){ try{ window.scrollTo(0,0); }catch(e){} }
+}
+
+/* search */
+function wireSearch(){
+  const input=$('#q'), box=$('#suggest'); if(!input||!box) return;
+  if(state.q) input.value=state.q;
+  const close=()=>box.classList.remove('open');
+  input.addEventListener('input',()=>{ const q=input.value.trim().toLowerCase(); if(q.length<2){close();return;}
+    const hits=PRODUCTS.filter(p=>((p.name||'')+' '+(p.tags||'')).toLowerCase().includes(q)).slice(0,6);
+    box.innerHTML=hits.length?hits.map(p=>'<a href="#/product/'+encodeURIComponent(p.slug)+'"><span class="thumb">'+img(p)+'</span><span><strong>'+esc(p.name)+'</strong><br><small>'+esc(p.unit||'')+'</small></span><span class="price" style="font-size:.86rem">'+money(currentPrice(p))+'</span></a>').join('')
+      :'<div style="padding:10px" class="muted">No products match “'+esc(input.value)+'”.</div>';
+    box.classList.add('open'); });
+  input.addEventListener('blur',()=>setTimeout(close,150));
+  input.addEventListener('focus',()=>{ if(input.value.trim().length>1) box.classList.add('open'); });
+  input.addEventListener('keydown',e=>{ if(e.key==='Enter'){ state.q=input.value.trim(); location.hash='#/shop'; input.blur(); } });
+}
+
+/* events */
+document.addEventListener('click',e=>{
+  const t=e.target;
+  const add=t.closest('[data-add]');
+  if(add && !add.disabled){ const slug=add.getAttribute('data-add'); const qty=t.closest('.pdp-info')?Number(($('#pdp-qty-val')||{}).textContent||1):1; cart.add(slug,qty); toast('Added to basket'); openCart(true); return; }
+  if(t.closest('[data-open-cart]')){ openCart(true); return; }
+  if(t.closest('[data-close-cart]')||t.id==='drawer'){ openCart(false); return; }
+  const inc=t.closest('[data-inc]'), dec=t.closest('[data-dec]');
+  if(inc||dec){ const wrap=(inc||dec).closest('[data-qty]');
+    if(wrap && wrap.id==='pdp-qty'){ const v=$('#pdp-qty-val'); v.textContent=Math.max(1,Number(v.textContent)+(inc?1:-1)); return; }
+    const slug=wrap.getAttribute('data-qty'); const l=cart.items.find(i=>i.slug===slug); if(l) cart.setQty(slug,l.qty+(inc?1:-1)); return; }
+  const rem=t.closest('[data-remove]'); if(rem){ cart.setQty(rem.getAttribute('data-remove'),0); return; }
+  const catBtn=t.closest('[data-catlist] button'); if(catBtn){ state.cat=catBtn.getAttribute('data-cat'); refreshCatalogue(); return; }
+  if(t.closest('[data-loadmore]')){ state.shown+=12; refreshCatalogue(); return; }
+  if(t.closest('#co-form button[type=submit]')){ e.preventDefault(); const form=$('#co-form');
+    if(!cart.count()){ toast('Your basket is empty'); return; }
+    if(form && !form.checkValidity()){ form.reportValidity(); return; }
+    const total=money(cart.subtotal()+(cart.subtotal()>=50?0:4.99));
+    document.querySelector('main').innerHTML='<section class="section"><div class="page" style="max-width:620px;text-align:center"><div style="font-size:3rem">✅</div><h1 style="font-style:italic;font-weight:800;font-size:1.9rem;margin:10px 0">Thank you, order placed!</h1><p class="muted">Order JT-'+Math.floor(100000+Math.random()*899999)+' · Total '+total+'</p><p class="muted">Demo only — no payment was processed.</p><div style="margin-top:18px;display:flex;gap:10px;justify-content:center"><a class="btn btn-primary" href="#/shop">Continue shopping</a><a class="btn btn-outline" href="#/">Home</a></div></div></section>';
+    cart.items=[]; cart.save(); try{ window.scrollTo(0,0); }catch(e){} return; }
+});
+document.addEventListener('change',e=>{
+  if(e.target.matches('[data-sort]')){ state.sort=e.target.value; refreshCatalogue(); }
+});
+let filterTimer;
+document.addEventListener('input',e=>{
+  if(e.target.matches('[data-filterq]')){ clearTimeout(filterTimer); const v=e.target.value; filterTimer=setTimeout(()=>{ state.q=v; refreshCatalogue(); },250); }
+});
+function refreshCatalogue(){
+  const grid=$('[data-grid]'); if(!grid){ route(); return; }
+  const dealsQ=/deals=1/.test(location.hash);
+  const list=dealsQ?PRODUCTS.filter(p=>p.sale_price!=null):filtered();
+  const slice=list.slice(0,state.shown);
+  grid.innerHTML=slice.length?slice.map(card).join(''):'<div class="empty-state" style="grid-column:1/-1"><strong>No products found</strong><span>Try a different filter.</span></div>';
+  const lbl=$('[data-countlabel]'); if(lbl) lbl.textContent=list.length+' products';
+  const sc=$('#shop-count'); if(sc) sc.textContent=list.length+' products available';
+  const lm=$('[data-loadmore]'); if(lm&&lm.parentElement) lm.parentElement.style.display=list.length>state.shown?'':'none';
+  $$('[data-catlist]').forEach(nav=>nav.innerHTML=catButtons(state.cat));
+}
+function openCart(open){ const d=$('#drawer'); if(!d) return; d.classList.toggle('open',open); d.setAttribute('aria-hidden',open?'false':'true'); document.body.style.overflow=open?'hidden':''; }
+
+window.addEventListener('hashchange',route);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') openCart(false); });
+route();
+})();
+</script>
+</body>
+</html>

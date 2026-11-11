@@ -1,0 +1,3 @@
+# Full-size originals supplied for the landing page. The optimised, web-ready
+# copies used by the site live in assets/img/landing/ (committed).
+assets/img/*.jpg
